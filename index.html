@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador Prime - Consórcio Imobiliário High Ticket</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-wrapper">
+  <div class="card-container">
+    <div class="card-header">
+      <span class="badge">Atendimento Exclusivo</span>
+      <h2>Diagnóstico de Crédito Imobiliário</h2>
+      <p>Simule a aquisição ou construção do seu imóvel com planejamento estratégico de alto valor.</p>
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="leadForm">
+      <!-- ETAPA 1: Projeto Imobiliário -->
+      <div class="step active" id="step1">
+        <div class="form-group">
+          <label for="valorCarta">Valor pretendido de carta de crédito:</label>
+          <select id="valorCarta" required>
+            <option value="">Selecione o valor do crédito...</option>
+            <option value="500k_800k">R$ 500.000 a R$ 800.000</option>
+            <option value="800k_1.5m">R$ 800.000 a R$ 1.500.000</option>
+            <option value="acima_1.5m">Acima de R$ 1.500.000</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="estadoImovel">Qual o estado atual do projeto/imóvel?</label>
+          <select id="estadoImovel" required>
+            <option value="">Selecione uma opção...</option>
+            <option value="encontrei">Já encontrei o imóvel e preciso arrematar/comprar</option>
+            <option value="construir">Pretendo adquirir terreno e/ou construir</option>
+            <option value="investimento">Foco em investimento imobiliário / aluguel</option>
+            <option value="pesquisando">Apenas pesquisando para o futuro</option>
+          </select>
+        </div>
+
+        <button type="button" class="btn-primary" onclick="nextStep(2)">Avançar &rarr;</button>
+      </div>
+
+      <!-- ETAPA 2: Capacidade Financeira e Lance -->
+      <div class="step" id="step2">
+        <div class="form-group">
+          <label for="valorLance">Valor aproximado disponível para Lance (R$):</label>
+          <input type="text" id="valorLance" placeholder="Ex: R$ 150.000 ou 0 se não houver" required>
+          <small class="help-text">Recurso próprio ou FGTS para antecipar a contemplação.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="parcela">Disponibilidade estimada para parcela mensal:</label>
+          <select id="parcela" required>
+            <option value="">Selecione a faixa de parcela...</option>
+            <option value="2.5k_5k">R$ 2.500 a R$ 5.000 / mês</option>
+            <option value="5k_10k">R$ 5.000 a R$ 10.000 / mês</option>
+            <option value="acima_10k">Acima de R$ 10.000 / mês</option>
+          </select>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn-secondary" onclick="nextStep(1)">&larr; Voltar</button>
+          <button type="button" class="btn-primary" onclick="nextStep(3)">Avançar &rarr;</button>
+        </div>
+      </div>
+
+      <!-- ETAPA 3: Dados Pessoais & Horário -->
+      <div class="step" id="step3">
+        <div class="form-group">
+          <label for="nome">Seu Nome Completo:</label>
+          <input type="text" id="nome" placeholder="Ex: Carlos Eduardo Silva" required>
+        </div>
+
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp (com DDD):</label>
+          <input type="tel" id="whatsapp" placeholder="(11) 99999-9999" required>
+        </div>
+
+        <div class="form-group">
+          <label for="horarioContato">Melhor horário para contato exclusivo:</label>
+          <select id="horarioContato" required>
+            <option value="">Selecione o melhor horário...</option>
+            <option value="manhi_9_12">Manhã (09:00 às 12:00)</option>
+            <option value="tarde_12_18">Tarde (12:00 às 18:00)</option>
+            <option value="noite_18_20">Noite (18:00 às 20:00)</option>
+            <option value="qualquer">Qualquer horário</option>
+          </select>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn-secondary" onclick="nextStep(2)">&larr; Voltar</button>
+          <button type="submit" id="btnSubmit" class="btn-primary">Solicitar Estudo de Viabilidade</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="step success-screen" id="stepSuccess">
+      <div class="icon-success">✓</div>
+      <h3>Solicitação Recebida com Sucesso!</h3>
+      <p>Analisaremos a melhor estratégia de contemplação e disponibilidade de cotas para o seu perfil. Entraremos em contato no horário solicitado.</p>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
